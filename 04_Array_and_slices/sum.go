@@ -16,10 +16,18 @@ func Sum(numbers []int) int {
 	return result
 }
 
-func SumAll(numberToSum ...[]int) (sum []int) {
+func SumAll(numberToSum ...[]int) []int {
 	var result []int
 	for i, numbers := range numberToSum {
 		result[i] = Sum(numbers)
 	}
 	return result
+}
+
+func SumAllTails(numberToSum ...[]int) (sum []int) {
+	for _, numbers := range numberToSum {
+		tail := numbers[1:]
+		sum = append(sum, Sum(tail))
+	}
+	return sum
 }
